@@ -18,10 +18,12 @@ public class WeatherForecastController {
     }
 
     @GetMapping("WeatherForecast")
-    public String WeatherForecast(@RequestParam(value = "region",required = false, defaultValue = "-1") Integer region, @RequestParam(value = "aura",required = false, defaultValue = "-1") Integer pogoda)
+    public String WeatherForecast(
+            @RequestParam(value = "region",required = false, defaultValue = "-1") Integer region
+            , @RequestParam(value = "aura",required = false, defaultValue = "-1") Integer pogoda
+    )
     {
         return pogodynka.getWeather(region,pogoda);
-
     }
 
     @GetMapping("AllForecasts")

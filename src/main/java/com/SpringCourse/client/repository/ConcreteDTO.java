@@ -45,12 +45,12 @@ public class ConcreteDTO {
 
     @Override
     public String toString() {
-        return "Bardzo ładna pogoda: {" +
-                "region='" + region + '\'' +
-                ", temperatura=" + temperatura +
-                ", szansaNaDeszczProcent=" + szansaNaDeszczProcent +
-                ", zachmurzenieProcent=" + zachmurzenieProcent +
-                ", creationDate=" + creationDate +
-                '}';
+        return "Bardzo ładna pogoda dla " +
+                "regionu " + region + ": " +
+                " Temperatura to " + temperatura +" C" +
+                ", szansa na opady " + szansaNaDeszczProcent+ "%" +
+                ", zachmurzenie " + zachmurzenieProcent + "%"+
+                ", pomiar wykonany: " + creationDate +
+                ".";
     }
 }
