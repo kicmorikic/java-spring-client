@@ -14,7 +14,8 @@ public class WeatherRepository implements IWeatherRepository {
 
     @Override
     public WeatherDTO getWeather(Integer region, Integer aura){
-        return restTemplate.getForObject(repositoryURLBase+"?region="+region+"&pogoda="+aura, WeatherDTO.class);
+        String req= repositoryURLBase+"?region="+region+"&pogoda="+aura;
+        return restTemplate.getForObject(req, WeatherDTO.class);
     }
 
 }

@@ -1,5 +1,9 @@
 package com.SpringCourse.client.configuration;
 
+import com.SpringCourse.client.repository.IWeatherRepository;
+import com.SpringCourse.client.repository.WeatherRepository;
+import com.SpringCourse.client.service.IWeatherService;
+import com.SpringCourse.client.service.WeatherService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,8 +19,15 @@ public class Configuraiton {
         return new RestTemplate();
     }
 
-
-    public String baseUrl(){
-        return urlBase;
+    @Bean
+    public String urlBase()
+    {
+        return  urlBase;
     }
+
+    @Bean
+    public IWeatherRepository repository(RestTemplate restTemplate){
+        return new WeatherRepository(restTemplate,urlBase);
+    }
+
 }
