@@ -1,9 +1,12 @@
 package com.SpringCourse.client.controller;
 
+import com.SpringCourse.client.repository.WeatherDTO;
 import com.SpringCourse.client.service.IWeatherService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Collection;
 
 @RestController
 public class WeatherForecastController {
@@ -19,5 +22,11 @@ public class WeatherForecastController {
     {
         return pogodynka.getWeather(region,pogoda);
 
+    }
+
+    @GetMapping("AllForecasts")
+    public Collection<String> getAllGeneratedForecasts()
+    {
+        return pogodynka.getAllForecasts();
     }
 }

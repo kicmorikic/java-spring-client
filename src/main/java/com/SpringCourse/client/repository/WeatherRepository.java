@@ -1,10 +1,13 @@
 package com.SpringCourse.client.repository;
 
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.Collection;
 
 @Repository
 public class WeatherRepository implements IWeatherRepository {
@@ -25,6 +28,17 @@ public class WeatherRepository implements IWeatherRepository {
 
 
         return restTemplate.getForObject(uri, WeatherDTO.class);
+    }
+
+    @Override
+    public Collection<ConcreteDTO> getAllForecasts() {
+        String url = "http://localhost:8081/GetAllWFServer";
+        Collection<ConcreteDTO> collection = restTemplate.exchange(url
+                , HttpMethod.GET
+                , null
+                , new ParameterizedTypeReference<Collection<ConcreteDTO>>() {})
+                .getBody();
+        return collection;
     }
 
 }
